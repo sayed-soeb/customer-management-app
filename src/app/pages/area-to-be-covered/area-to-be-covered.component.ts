@@ -25,7 +25,7 @@ export class AreaToBeCoveredComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:5000/api/customers/used-areas').subscribe(data => {
+    this.http.get<any[]>('https://backend-customer-management.onrender.com/api/customers/used-areas').subscribe(data => {
       this.usedAreas = data;
       this.setAreaCovered();
       this.filterDistricts();

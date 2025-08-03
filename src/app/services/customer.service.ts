@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CustomerService {
-  baseUrl = 'http://localhost:5000/api/customers';
+  baseUrl = 'https://backend-customer-management.onrender.com/api/customers';
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
