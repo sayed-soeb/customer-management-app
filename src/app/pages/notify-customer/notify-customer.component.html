@@ -1,0 +1,10 @@
+<h2>Notify Customers</h2>
+
+<select [(ngModel)]="selectedDistrict">
+  <option [value]="null">All</option>
+  <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+</select>
+
+<textarea [(ngModel)]="message" placeholder="Enter your message here..."></textarea>
+
+<button (click)="send()">Send Message</button>

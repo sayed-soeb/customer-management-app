@@ -1,0 +1,36 @@
+<div class="area-container">
+  <div class="area-header">Area Covered (Used)</div>
+
+  <div class="area-boxes">
+    <div class="area-box">
+      <div class="area-number">{{ uniqueDistricts.length }}</div>
+      <div class="area-label">Districts</div>
+    </div>
+    <div class="area-box">
+      <div class="area-number">{{ uniqueSubDistricts.length }}</div>
+      <div class="area-label">Subdistricts</div>
+    </div>
+    <div class="area-box">
+      <div class="area-number">{{ uniqueVillages.length }}</div>
+      <div class="area-label">Villages</div>
+    </div>
+  </div>
+</div>
+
+<!-- area-to-be-covered.component.html -->
+<div class="area-section">
+  <label>District:</label>
+  <select [(ngModel)]="selectedDistrict" (change)="onDistrictChange()">
+    <option *ngFor="let d of availableDistricts" [value]="d.district">{{ d.district }}</option>
+  </select>
+
+  <label>Subdistrict:</label>
+  <select [(ngModel)]="selectedTaluk" (change)="onTalukChange()">
+    <option *ngFor="let t of availableTaluks" [value]="t.subDistrict">{{ t.subDistrict }}</option>
+  </select>
+
+  <label>Village:</label>
+  <select [(ngModel)]="selectedVillage">
+    <option *ngFor="let v of availableVillages" [value]="v">{{ v }}</option>
+  </select>
+</div>

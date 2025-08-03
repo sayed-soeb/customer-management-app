@@ -1,0 +1,18 @@
+<nav>
+  <a routerLink="add-customer" routerLinkActive="active">Add Customer</a>
+  <a routerLink="view-customer" routerLinkActive="active">View Customers</a>
+  <a routerLink="area-covered" routerLinkActive="active">Area to be covered</a>
+  <a routerLink="follow-up" routerLinkActive="active">Follow-up Customers</a>
+  <a routerLink="notify-customer" routerLinkActive="active">Notify Customers</a>
+
+  <!-- Spacer -->
+  <span style="flex: 1;"></span>
+
+  <!-- Logout Button -->
+  <button (click)="logout()" style="background-color: #e74c3c; padding: 6px 12px; border-radius: 4px; width: 75px;">
+    Logout
+  </button>
+</nav>
+
+<!-- Child Views -->
+<router-outlet></router-outlet>

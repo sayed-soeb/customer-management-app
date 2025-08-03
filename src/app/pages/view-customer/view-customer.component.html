@@ -1,0 +1,86 @@
+<h2>All Customers</h2>
+
+<input
+  type="text"
+  [(ngModel)]="search"
+  (input)="onSearchChange()"
+  placeholder="Search by name, email..."
+  style="margin-bottom: 1rem;"
+/>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.mobile }}</td>
+      <td>{{ customer.email }}</td>
+      <td>
+        <button (click)="editCustomer(customer)">✏ Edit</button>
+        <button (click)="deleteCustomer(customer._id)">🗑 Delete</button>
+        <button (click)="openViewModal(customer)">👁 View Details</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div style="margin-top: 1rem;">
+  <button (click)="prevPage()" [disabled]="page <= 1">⬅ Previous</button>
+  <span>Page {{ page }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="page >= totalPages">Next ➡</button>
+</div>
+
+<!-- View Details Modal -->
+<div class="custom-modal" *ngIf="viewingCustomer">
+  <div class="custom-modal-content">
+    <h3 class="modal-title">Customer Details</h3>
+    <p><strong>Name:</strong> {{ viewingCustomer.name }}</p>
+    <p><strong>Email:</strong> {{ viewingCustomer.email }}</p>
+    <p><strong>Mobile:</strong> {{ viewingCustomer.mobile }}</p>
+    <p><strong>Address:</strong> {{ viewingCustomer.address }}</p>
+    <p><strong>Taluk:</strong> {{ viewingCustomer.taluk }}</p>
+
+    <h4>Products</h4>
+    <ul>
+      <li *ngFor="let p of viewingCustomer.products">
+        📦 {{ p.name }} - ₹{{ p.price }} on {{ p.date | date}}
+      </li>
+    </ul>
+
+    <!-- Add Product Form -->
+    <h4>Add Product</h4>
+    <form (ngSubmit)="addProductToCustomer()">
+      <input [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required />
+      <input [(ngModel)]="newProduct.price" name="price" placeholder="Price" required type="number" />
+      <input [(ngModel)]="newProduct.date" name="purchaseDate" placeholder="Purchase Date" required type="date" />
+      <div style="display: flex; justify-content: space-between;">
+      <button type="submit">➕ Add Product</button>
+       <button class="btn-cancel" (click)="closeViewModal()">✖ Close</button>
+       </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="custom-modal" *ngIf="editingCustomer">
+  <div class="custom-modal-content">
+    <h3 class="modal-title">Edit Customer</h3>
+    <form (ngSubmit)="updateCustomer()">
+      <input [(ngModel)]="editingCustomer.name" name="name" required />
+      <input [(ngModel)]="editingCustomer.email" name="email" required />
+      <input [(ngModel)]="editingCustomer.mobile" name="mobile" required />
+      <input [(ngModel)]="editingCustomer.address" name="address" />
+      <input [(ngModel)]="editingCustomer.taluk" name="taluk" />
+      <button type="submit">💾 Save</button>
+      <button type="button" (click)="cancelEdit()">✖ Cancel</button>
+    </form>
+  </div>
+</div>

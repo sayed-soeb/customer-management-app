@@ -1,0 +1,50 @@
+<div class="form-container">
+  <h2>Add Customer</h2>
+
+  <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="customer.name" name="name" placeholder="Name" required />
+      <input type="email" [(ngModel)]="customer.email" name="email" placeholder="Email" />
+      <input type="text" [(ngModel)]="customer.mobile" name="mobile" placeholder="Mobile" required />
+      <input type="text" [(ngModel)]="customer.address" name="address" placeholder="Address" />
+    </div>
+
+    <div class="form-group">
+      <select [(ngModel)]="selectedDistrict" name="district" (change)="onDistrictChange()">
+        <option value="">Select District</option>
+        <option *ngFor="let d of districts" [value]="d.district">{{ d.district }}</option>
+      </select>
+
+      <select [(ngModel)]="selectedTaluk" name="taluk" (change)="onTalukChange()" [disabled]="!taluks.length">
+        <option value="">Select Taluk</option>
+        <option *ngFor="let t of taluks" [value]="t.subDistrict">{{ t.subDistrict }}</option>
+      </select>
+
+      <select [(ngModel)]="customer.gram" name="gram" [disabled]="!villages.length">
+        <option value="">Select Village</option>
+        <option *ngFor="let v of villages">{{ v }}</option>
+      </select>
+    </div>
+
+    <input type="text" [(ngModel)]="customer.tractorRc" name="tractorRc" placeholder="Tractor RC" />
+
+    <hr />
+    <h3>Products</h3>
+
+    <div class="product-form">
+      <input type="text" [(ngModel)]="newProduct.name" name="productName" placeholder="Product Name" />
+      <input type="number" [(ngModel)]="newProduct.price" name="productPrice" placeholder="Price" />
+      <input type="date" [(ngModel)]="newProduct.date" name="productDate" />
+      <button type="button" (click)="addProduct()" class="btn-secondary">Add Product</button>
+    </div>
+
+    <ul class="product-list">
+      <li *ngFor="let p of customer.products; let i = index">
+        {{ p.name }} - ₹{{ p.price }} - {{ p.date }}
+        <button type="button" (click)="removeProduct(i)" class="btn-remove">Remove</button>
+      </li>
+    </ul>
+
+    <button type="submit" class="btn-primary">Add Customer</button>
+  </form>
+</div>

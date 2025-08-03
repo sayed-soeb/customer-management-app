@@ -1,0 +1,21 @@
+<div class="followup-container">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (keyup.enter)="search()"
+    placeholder="Search by name, mobile, district, etc."
+  />
+  <button (click)="search()">Search</button>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <div *ngIf="!loading && followUps.length === 0">No follow-ups found</div>
+
+  <ul *ngIf="!loading && followUps.length > 0">
+    <li *ngFor="let customer of followUps">
+      <strong>{{ customer.name }}</strong> - {{ customer.mobile }} <br />
+      Last Contacted: {{ customer.lastContacted | date: 'shortDate' }}
+      <button (click)="markContacted(customer._id)">Mark as Contacted</button>
+    </li>
+  </ul>
+</div>

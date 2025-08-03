@@ -1,0 +1,14 @@
+<div class="login-box">
+  <h2 *ngIf="isRegister">Register</h2>
+  <h2 *ngIf="!isRegister">Login</h2>
+
+  <form (ngSubmit)="submit()">
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+    <button type="submit">{{ isRegister ? 'Register' : 'Login' }}</button>
+  </form>
+
+  <p (click)="toggle()" style="cursor:pointer; color: blue;">
+    {{ isRegister ? 'Already have an account? Login' : 'Don’t have an account? Register' }}
+  </p>
+</div>

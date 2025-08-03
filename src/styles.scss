@@ -1,1 +1,157 @@
 /* You can add global styles to this file, and also import other style files */
+/* ========== RESET & BASE ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  padding: 1rem;
+}
+
+/* ========== FORM STYLES ========== */
+form, .form-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #1e6fc8;
+}
+
+/* ========== TABLE STYLES ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem auto;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+thead {
+  background-color: #2e86de;
+  color: white;
+}
+
+input[type="text"] {
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+/* ========== NAVBAR ========== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #222;
+  padding: 1rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #f1c40f;
+}
+
+nav a.active {
+  border-bottom: 2px solid #f1c40f;
+}
+
+.area-container {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 24px;
+  background: #f4f6f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.area-header {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.area-boxes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.area-box {
+  flex: 1;
+  min-width: 150px;
+  background-color: #fffbe6;
+  border-left: 6px solid #ffc107;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.area-box:hover {
+  background-color: #fff3cd;
+  transform: translateY(-4px);
+}
+
+.area-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff9800;
+}
+
+.area-label {
+  font-size: 16px;
+  color: #555;
+}
+
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  form, .form-container {
+    padding: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
